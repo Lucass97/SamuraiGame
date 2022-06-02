@@ -1,0 +1,208 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://assets/art/enemy/archer/archer_shooting/archer_shooting_06.tres" type="Texture" id=1]
+[ext_resource path="res://assets/art/enemy/archer/archer_walking_05.tres" type="Texture" id=2]
+[ext_resource path="res://assets/art/enemy/archer/archer_walking_02.tres" type="Texture" id=3]
+[ext_resource path="res://assets/art/enemy/archer/archer_walking_03.tres" type="Texture" id=4]
+[ext_resource path="res://assets/art/enemy/archer/archer_walking_06.tres" type="Texture" id=5]
+[ext_resource path="res://assets/art/enemy/archer/archer_shooting/archer_shooting_02.tres" type="Texture" id=6]
+[ext_resource path="res://assets/art/enemy/archer/archer_walking_01.tres" type="Texture" id=7]
+[ext_resource path="res://assets/art/enemy/archer/archer_walking_04.tres" type="Texture" id=8]
+[ext_resource path="res://assets/art/enemy/archer/archer_shooting/archer_shooting_05.tres" type="Texture" id=9]
+[ext_resource path="res://assets/art/enemy/archer/archer_shooting/archer_shooting_04.tres" type="Texture" id=10]
+[ext_resource path="res://assets/art/enemy/archer/archer_shooting/archer_shooting_03.tres" type="Texture" id=11]
+[ext_resource path="res://assets/art/enemy/archer/archer_shooting/archer_shooting_01.tres" type="Texture" id=12]
+[ext_resource path="res://assets/art/enemy/archer/archer_shooting/archer_shooting_07.tres" type="Texture" id=13]
+[ext_resource path="res://assets/art/enemy/archer/archer_shooting/archer_shooting_00.tres" type="Texture" id=14]
+[ext_resource path="res://src/Actors/EnemyArcher.gd" type="Script" id=15]
+[ext_resource path="res://src/Actors/Bow.gd" type="Script" id=16]
+[ext_resource path="res://assets/art/miscellaneous/hit/hit_03.tres" type="Texture" id=17]
+[ext_resource path="res://assets/art/miscellaneous/hit/hit_01.tres" type="Texture" id=18]
+[ext_resource path="res://assets/art/miscellaneous/hit/hit_02.tres" type="Texture" id=19]
+[ext_resource path="res://assets/art/miscellaneous/hit/hit_04.tres" type="Texture" id=20]
+[ext_resource path="res://assets/audio/sfx/arrow_sound_effect1.mp3" type="AudioStream" id=21]
+
+[sub_resource type="Animation" id=1]
+resource_name = "arrow_sfx"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("ArrowSFX:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite/HitEffect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite/HitEffect:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 13 ) ],
+"loop": false,
+"name": "shoot",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 30.1988, 35.0253 )
+
+[node name="EnemyArcher" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 25
+script = ExtResource( 15 )
+
+[node name="PlatformDetector" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 30 )
+collision_mask = 8
+
+[node name="FloorDetectorLeft" type="RayCast2D" parent="."]
+position = Vector2( -30, -3 )
+enabled = true
+cast_to = Vector2( 0, 60 )
+collision_mask = 24
+
+[node name="FloorDetectorRight" type="RayCast2D" parent="."]
+position = Vector2( 30, -3 )
+enabled = true
+cast_to = Vector2( 0, 60 )
+collision_mask = 24
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/arrow_sfx = SubResource( 1 )
+anims/destroy = SubResource( 2 )
+anims/hit = SubResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( -5, 5 )
+frames = SubResource( 4 )
+animation = "idle"
+playing = true
+
+[node name="Bow" type="Position2D" parent="AnimatedSprite"]
+position = Vector2( 20, 2 )
+script = ExtResource( 16 )
+
+[node name="CooldownAttack" type="Timer" parent="AnimatedSprite/Bow"]
+wait_time = 1.5
+one_shot = true
+
+[node name="HitEffect" type="AnimatedSprite" parent="AnimatedSprite"]
+visible = false
+position = Vector2( 2.695, 0 )
+rotation = 3.14159
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 5 )
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 6 )
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = -1.5708
+enabled = true
+cast_to = Vector2( 0, 500 )
+
+[node name="RayCastBack" type="RayCast2D" parent="."]
+rotation = 1.5708
+enabled = true
+cast_to = Vector2( 0, 200 )
+
+[node name="ArrowSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 21 )
+
+[connection signal="timeout" from="AnimatedSprite/Bow/CooldownAttack" to="." method="_on_CooldownAttack_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]

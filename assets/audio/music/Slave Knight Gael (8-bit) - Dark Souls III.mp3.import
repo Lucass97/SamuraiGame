@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Slave Knight Gael (8-bit) - Dark Souls III.mp3-4f57755eac2a51bb7df34ea28f813fe7.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/Slave Knight Gael (8-bit) - Dark Souls III.mp3"
+dest_files=[ "res://.import/Slave Knight Gael (8-bit) - Dark Souls III.mp3-4f57755eac2a51bb7df34ea28f813fe7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

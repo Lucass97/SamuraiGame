@@ -1,0 +1,108 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/art/ui/CardLevel2.png" type="Texture" id=1]
+[ext_resource path="res://assets/art/ui/CardLevel3.png" type="Texture" id=2]
+[ext_resource path="res://assets/art/ui/CardLevel4.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/ui/CardLevel1.png" type="Texture" id=4]
+[ext_resource path="res://src/UserInterface/ScrollContainer.gd" type="Script" id=5]
+
+[node name="ScrollContainer" type="ScrollContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = false
+mouse_filter = 1
+scroll_vertical_enabled = false
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scroll_duration = 0.3
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 4298.0
+margin_bottom = 468.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+margin_top = 29.0
+margin_right = 4298.0
+margin_bottom = 439.0
+mouse_filter = 2
+custom_constants/margin_right = 1920
+custom_constants/margin_left = 1920
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer"]
+margin_left = 1920.0
+margin_right = 2378.0
+margin_bottom = 410.0
+mouse_filter = 2
+custom_constants/separation = 100
+
+[node name="CardMenu1" type="TextureRect" parent="CenterContainer/MarginContainer/HBoxContainer"]
+margin_right = 258.0
+margin_bottom = 410.0
+texture = ExtResource( 4 )
+
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/MarginContainer/HBoxContainer"]
+margin_left = 358.0
+margin_right = 358.0
+margin_bottom = 410.0
+border_color = Color( 0, 0, 0, 1 )
+border_width = 10.0
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/MarginContainer/HBoxContainer/ReferenceRect"]
+margin_right = 40.0
+margin_bottom = 40.0
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/MarginContainer/HBoxContainer/ReferenceRect/GridContainer"]
+margin_bottom = 14.0
+text = "Scheletro
+Si tratta di un nemico di base: si muove velocemente e ha uno solo punto salute"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/HBoxContainer/ReferenceRect/GridContainer"]
+margin_left = 4.0
+margin_right = 68.0
+margin_bottom = 14.0
+text = "SKELETON"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardMenu2" type="TextureRect" parent="CenterContainer/MarginContainer/HBoxContainer"]
+visible = false
+margin_left = 458.0
+margin_right = 716.0
+margin_bottom = 410.0
+texture = ExtResource( 1 )
+
+[node name="CardMenu3" type="TextureRect" parent="CenterContainer/MarginContainer/HBoxContainer"]
+visible = false
+margin_left = 458.0
+margin_right = 716.0
+margin_bottom = 410.0
+texture = ExtResource( 2 )
+
+[node name="CardMenu4" type="TextureRect" parent="CenterContainer/MarginContainer/HBoxContainer"]
+visible = false
+margin_left = 458.0
+margin_right = 716.0
+margin_bottom = 410.0
+texture = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/MarginContainer/HBoxContainer"]
+margin_left = 458.0
+margin_right = 458.0
+margin_bottom = 410.0
+
+[connection signal="gui_input" from="." to="." method="_on_ScrollContainer_gui_input"]
+[connection signal="focus_entered" from="CenterContainer/MarginContainer/HBoxContainer/CardMenu4" to="." method="_on_CardMenu4_focus_entered"]
+[connection signal="gui_input" from="CenterContainer/MarginContainer/HBoxContainer/CardMenu4" to="." method="_on_CardMenu4_gui_input"]

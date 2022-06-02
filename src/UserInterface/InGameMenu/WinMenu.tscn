@@ -1,0 +1,191 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://assets/theme/fonts/kenney_mini_square.tres" type="DynamicFontData" id=1]
+[ext_resource path="res://src/UserInterface/Counters/TimeCounter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/theme/user_interface.tres" type="Theme" id=3]
+[ext_resource path="res://src/UserInterface/Counters/GenericScriptCounterScript.gd" type="Script" id=4]
+[ext_resource path="res://src/UserInterface/Counters/KnightsCounter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/UserInterface/Counters/YellowArchersCounter.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/UserInterface/Counters/RedArchersCounter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/UserInterface/Counters/CoinsCounterV2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/UserInterface/Counters/ShieldKnightsCounter.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/UserInterface/Counters/ArchersCounter.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/UserInterface/Counters/SkeletonsCounter.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/UserInterface/InGameMenu/WinMenu.gd" type="Script" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 44
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 0.5 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 0.5 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 0.5 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 0.5 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 0.5 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 0.5 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 0.5 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0, 0, 0, 0.5 )
+
+[node name="WinMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.294118 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
+margin_left = 250.0
+margin_top = 74.0
+margin_right = 550.0
+margin_bottom = 405.0
+rect_min_size = Vector2( 300, 200 )
+custom_constants/separation = 6
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 55.0
+custom_fonts/font = SubResource( 1 )
+text = "You win!"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 61.0
+margin_right = 300.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 87.0
+margin_right = 300.0
+margin_bottom = 279.0
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/CenterContainer/VBoxContainer/CenterContainer"]
+margin_left = 48.0
+margin_right = 252.0
+margin_bottom = 192.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoinsCounterV2" parent="ColorRect/CenterContainer/VBoxContainer/CenterContainer/GridContainer" instance=ExtResource( 8 )]
+margin_left = 0.0
+margin_top = 0.0
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 4 )
+level_name = "level1"
+entity = "collected_coins"
+
+[node name="TimerCounter" parent="ColorRect/CenterContainer/VBoxContainer/CenterContainer/GridContainer" instance=ExtResource( 2 )]
+margin_left = 104.0
+margin_top = 0.0
+margin_right = 204.0
+custom_styles/panel = SubResource( 3 )
+level_name = "level1"
+entity = "time"
+
+[node name="SkeletonCounter" parent="ColorRect/CenterContainer/VBoxContainer/CenterContainer/GridContainer" instance=ExtResource( 11 )]
+margin_left = 0.0
+margin_top = 49.0
+margin_bottom = 94.0
+custom_styles/panel = SubResource( 4 )
+script = ExtResource( 4 )
+level_name = "level1"
+entity = "skeletons_killed"
+
+[node name="KnightCounter" parent="ColorRect/CenterContainer/VBoxContainer/CenterContainer/GridContainer" instance=ExtResource( 5 )]
+margin_left = 104.0
+margin_top = 49.0
+margin_right = 204.0
+margin_bottom = 94.0
+custom_styles/panel = SubResource( 5 )
+script = ExtResource( 4 )
+level_name = "level1"
+entity = "knights_killed"
+
+[node name="ShieldKnightCounter" parent="ColorRect/CenterContainer/VBoxContainer/CenterContainer/GridContainer" instance=ExtResource( 9 )]
+margin_left = 0.0
+margin_top = 98.0
+margin_bottom = 143.0
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+level_name = "level1"
+entity = "shield_knights_killed"
+
+[node name="ArcherCounter" parent="ColorRect/CenterContainer/VBoxContainer/CenterContainer/GridContainer" instance=ExtResource( 10 )]
+margin_left = 104.0
+margin_top = 98.0
+margin_right = 204.0
+margin_bottom = 143.0
+custom_styles/panel = SubResource( 7 )
+script = ExtResource( 4 )
+level_name = "level1"
+entity = "archers_killed"
+
+[node name="YellowArcherCounter" parent="ColorRect/CenterContainer/VBoxContainer/CenterContainer/GridContainer" instance=ExtResource( 6 )]
+margin_left = 0.0
+margin_top = 147.0
+margin_bottom = 192.0
+custom_styles/panel = SubResource( 8 )
+script = ExtResource( 4 )
+level_name = "level1"
+entity = "yellow_archers_killed"
+
+[node name="RedArcherCounter2" parent="ColorRect/CenterContainer/VBoxContainer/CenterContainer/GridContainer" instance=ExtResource( 7 )]
+margin_left = 104.0
+margin_top = 147.0
+margin_right = 204.0
+margin_bottom = 192.0
+custom_styles/panel = SubResource( 9 )
+level_name = "level1"
+
+[node name="QuitButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_left = 60.0
+margin_top = 285.0
+margin_right = 240.0
+margin_bottom = 331.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_horizontal = 4
+theme = ExtResource( 3 )
+text = "Quit"
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

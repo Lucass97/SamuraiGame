@@ -1,0 +1,225 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://src/Actors/EnemyShield.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Level/CircularSaw.gd" type="Script" id=2]
+[ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://src/Level/Level.gd" type="Script" id=4]
+[ext_resource path="res://src/Objects/Spuntoni.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Actors/EnemyArcher.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Platforms/Platform.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/Objects/Skull.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/Actors/EnemySkeleton.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/Actors/EnemyKnight.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/Actors/EnemyArcherEnhancedTypeB.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/Actors/EnemyArcherEnhancedTypeA.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/art/miscellaneous/circular_saw.tres" type="Texture" id=15]
+
+[sub_resource type="Animation" id=1]
+resource_name = "rotate"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "movement"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -300, 400 ), Vector2( 200, 400 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=3]
+
+[sub_resource type="Animation" id=4]
+resource_name = "movement"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 850, 600 ), Vector2( 850, 160 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "movement"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -160, 280 ), Vector2( -160, -100 ) ]
+}
+
+[sub_resource type="Environment" id=6]
+background_mode = 4
+glow_blend_mode = 0
+glow_hdr_threshold = 1.5
+
+[node name="Level" type="Node2D"]
+pause_mode = 1
+script = ExtResource( 4 )
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( 1, 0 )
+tile_set = ExtResource( 3 )
+collision_use_kinematic = true
+collision_layer = 16
+collision_mask = 3
+format = 1
+tile_data = PoolIntArray( -720898, 1073741824, 0, -655366, 1073741824, 0, -720894, 1073741824, 0, -720886, 1073741824, 0, -589833, 1073741824, 0, -655354, 1073741824, 0, -655346, 1073741824, 0, -655342, 1073741824, 0, -524300, 1073741824, 0, -524294, 0, 0, -524290, 0, 0, -589814, 1073741824, 0, -589805, 1073741824, 0, -524286, 0, 0, -524283, 1073741824, 0, -458730, 1073741825, 0, -458729, 1073741825, 0, -327694, 1073741824, 0, -327691, 0, 0, -327688, 0, 0, -327684, 0, 0, -327681, -1073741824, 0, -393213, 1610612736, 0, -393209, 536870912, 0, -393205, 0, 0, -393201, 0, 0, -393194, 1073741825, 0, -327662, 2, 0, -327661, 1, 0, -327658, 1073741825, 0, -196625, 1073741825, 0, -196618, 536870940, 0, -262144, 0, 0, -262122, 1073741825, 0, -262121, 1073741825, 0, -131080, 0, 0, -131076, 0, 0, -196605, 0, 0, -196589, 1, 0, -196585, 1073741825, 0, -65553, 1073741825, 0, -65552, 1073741825, 0, -65548, 4, 0, -65545, 1073741824, 0, -131066, 3, 0, -131063, 536870912, 0, -131060, 3, 0, -131057, 0, 0, -131054, -1073741822, 0, -131053, 1, 0, -131049, 1073741825, 0, -17, 1073741825, 0, -14, -1610612735, 0, -12, -1610612735, 0, -10, -1610612732, 0, -1, 536870932, 0, -65536, 0, 0, -65517, 1, 0, -65513, 1073741825, 0, 65519, 1073741825, 0, 65520, 1073741825, 0, 65527, 1073741824, 0, 65529, 0, 0, 65533, 0, 0, 65535, 5, 0, 0, 4, 0, 3, 4, 0, 20, 1, 0, 23, 1073741825, 0, 131055, 1073741825, 0, 131063, 9, 0, 65540, 0, 0, 65544, 536870912, 0, 65549, 0, 0, 65554, -1073741822, 0, 65555, 1, 0, 65556, 1, 0, 65559, 1073741825, 0, 196592, 1073741825, 0, 196598, -536870908, 0, 196599, 9, 0, 196607, 0, 0, 131083, 536870912, 0, 131086, 0, 0, 131095, 1073741825, 0, 262127, 1073741825, 0, 262130, 1073741825, 0, 262132, -1610612735, 0, 262133, 536870912, 0, 262134, -536870908, 0, 262135, 9, 0, 196609, 26, 0, 196610, 0, 0, 196612, 20, 0, 196627, 1, 0, 196631, 1073741825, 0, 327671, 9, 0, 327673, 0, 0, 327677, 0, 0, 327679, 6, 0, 262148, 5, 0, 262150, 6, 0, 262162, -1073741822, 0, 262164, 1, 0, 262167, 1073741825, 0, 393199, 1073741825, 0, 393202, 1073741825, 0, 393206, 2, 0, 327681, 0, 0, 327685, 536870912, 0, 327687, 536870912, 0, 327700, 1, 0, 327703, 1073741825, 0, 458735, 1073741825, 0, 458745, 0, 0, 458749, 0, 0, 458750, 0, 0, 393227, 0, 0, 393231, 4, 0, 393239, 1073741825, 0, 524271, 1073741825, 0, 524274, -536870911, 0, 524276, -536870911, 0, 458756, 28, 0, 458757, 3, 0, 458766, 536870912, 0, 458767, 536870923, 0, 458768, 536870923, 0, 458769, 536870923, 0, 458770, -1073741822, 0, 458771, 1, 0, 458775, 1073741825, 0, 589807, 1073741825, 0, 589814, 2, 0, 524291, 22, 0, 524304, 536870939, 0, 524311, 1073741825, 0, 655343, 1073741825, 0, 589826, 6, 0, 589832, 6, 0, 589843, 1, 0, 589846, 1, 0, 720879, 1073741825, 0, 720883, -536870911, 0, 720889, 6, 0, 720892, 6, 0, 720895, 6, 0, 655362, 536870913, 0, 655365, 536870913, 0, 655368, 536870913, 0, 655371, 6, 0, 655374, 6, 0, 655377, 7, 0, 655378, 1, 0, 786415, 1073741825, 0, 786421, 536870913, 0, 786422, 536870913, 0, 786425, 1, 0, 786428, 536870913, 0, 786429, 1, 0, 720896, 1073741825, 0, 720900, 1, 0, 720904, 1, 0, 720908, 1, 0, 720912, 1, 0, 720917, 1, 0, 851951, 1073741825, 0, 851958, 536870913, 0, 851959, 536870913, 0, 786452, 1, 0, 917493, 1, 0, 917496, 1, 0, 917500, 1, 0, 851968, 1, 0, 851972, 1, 0, 851976, 1, 0, 851980, 1, 0, 851984, 1, 0, 917524, 1, 0, 983056, 1, 0 )
+
+[node name="Coin" parent="." instance=ExtResource( 6 )]
+position = Vector2( 138.21, 550.632 )
+
+[node name="Coin2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 137.515, 522.554 )
+
+[node name="Skull" parent="." instance=ExtResource( 10 )]
+position = Vector2( 900.696, -182.827 )
+
+[node name="EnemyKnight1" parent="." instance=ExtResource( 12 )]
+position = Vector2( 154.552, -118.26 )
+
+[node name="EnemyShield1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 464.565, 217.201 )
+
+[node name="EnemyArcher1" parent="." instance=ExtResource( 7 )]
+position = Vector2( -186.967, 591.251 )
+
+[node name="RedEnemyArcher1" parent="." instance=ExtResource( 14 )]
+position = Vector2( 880.848, -200.926 )
+
+[node name="YellowEnemyArcher1" parent="." instance=ExtResource( 13 )]
+position = Vector2( -705.908, -208.911 )
+
+[node name="YellowEnemyArcher2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1073.88, 307.611 )
+
+[node name="EnemySkeleton1" parent="." instance=ExtResource( 11 )]
+position = Vector2( 933.861, 571.979 )
+
+[node name="EnemySkeleton2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 458.525, -195.644 )
+
+[node name="EnemySkeleton3" parent="." instance=ExtResource( 11 )]
+position = Vector2( -75.4109, -75.5086 )
+
+[node name="CircularSaw" type="KinematicBody2D" parent="."]
+position = Vector2( -300, 400 )
+script = ExtResource( 2 )
+
+[node name="DamageTimer" type="Timer" parent="CircularSaw"]
+
+[node name="Sprite" type="Sprite" parent="CircularSaw"]
+texture = ExtResource( 15 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CircularSaw"]
+autoplay = "rotate"
+anims/rotate = SubResource( 1 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="CircularSaw"]
+autoplay = "movement"
+playback_process_mode = 0
+anims/movement = SubResource( 2 )
+
+[node name="DamageArea" type="Area2D" parent="CircularSaw"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CircularSaw/DamageArea"]
+scale = Vector2( 11, 11 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CircularSaw"]
+scale = Vector2( 10.5, 10.5 )
+shape = SubResource( 3 )
+
+[node name="Platform1" parent="." instance=ExtResource( 8 )]
+position = Vector2( 850, 600 )
+z_index = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform1"]
+autoplay = "movement"
+playback_process_mode = 0
+anims/movement = SubResource( 4 )
+
+[node name="Platform2" parent="." instance=ExtResource( 8 )]
+position = Vector2( -160, -100 )
+z_index = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform2"]
+autoplay = "movement"
+playback_process_mode = 0
+anims/movement = SubResource( 5 )
+
+[node name="Spuntoni1" parent="." instance=ExtResource( 5 )]
+position = Vector2( 290.239, 84 )
+
+[node name="Spuntoni2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 829.285, 79.9987 )
+
+[node name="Spuntoni3" parent="." instance=ExtResource( 5 )]
+position = Vector2( -494.426, 303.267 )
+
+[node name="Coins2" type="Node2D" parent="."]
+position = Vector2( -200, 170 )
+
+[node name="Coin" parent="Coins2" instance=ExtResource( 6 )]
+
+[node name="Coin2" parent="Coins2" instance=ExtResource( 6 )]
+position = Vector2( 0, -30 )
+
+[node name="Coin3" parent="Coins2" instance=ExtResource( 6 )]
+position = Vector2( 0, -60 )
+
+[node name="Coin4" parent="Coins2" instance=ExtResource( 6 )]
+position = Vector2( 0, -80 )
+
+[node name="Coins3" type="Node2D" parent="."]
+position = Vector2( 1120, 600 )
+
+[node name="Coin" parent="Coins3" instance=ExtResource( 6 )]
+
+[node name="Coin2" parent="Coins3" instance=ExtResource( 6 )]
+position = Vector2( 0, -30 )
+
+[node name="Coin3" parent="Coins3" instance=ExtResource( 6 )]
+position = Vector2( 0, -60 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )
+
+[connection signal="timeout" from="CircularSaw/DamageTimer" to="CircularSaw" method="_on_DamageTimer_timeout"]
+[connection signal="body_entered" from="CircularSaw/DamageArea" to="CircularSaw" method="_on_Area2D_body_entered"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sword_sound_effects1.mp3-c744ef0a98c57518455f53b30db72b3e.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/sword_sound_effects1.mp3"
+dest_files=[ "res://.import/sword_sound_effects1.mp3-c744ef0a98c57518455f53b30db72b3e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

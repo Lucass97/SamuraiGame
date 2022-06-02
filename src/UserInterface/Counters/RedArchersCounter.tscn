@@ -1,0 +1,58 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/theme/user_interface.tres" type="Theme" id=1]
+[ext_resource path="res://assets/art/enemy/archer/archer_shooting/archer_shooting_05.tres" type="Texture" id=2]
+[ext_resource path="res://assets/art/enemy/archer/archer_shooting/archer_shooting_00.tres" type="Texture" id=3]
+[ext_resource path="res://assets/art/enemy/archer/archer_shooting/archer_shooting_03.tres" type="Texture" id=4]
+[ext_resource path="res://assets/art/enemy/archer/archer_shooting/archer_shooting_04.tres" type="Texture" id=5]
+[ext_resource path="res://assets/art/enemy/archer/archer_shooting/archer_shooting_02.tres" type="Texture" id=6]
+[ext_resource path="res://assets/art/enemy/archer/archer_shooting/archer_shooting_07.tres" type="Texture" id=7]
+[ext_resource path="res://assets/art/enemy/archer/archer_shooting/archer_shooting_01.tres" type="Texture" id=8]
+[ext_resource path="res://assets/art/enemy/archer/archer_shooting/archer_shooting_06.tres" type="Texture" id=9]
+[ext_resource path="res://src/UserInterface/Counters/GenericScriptCounterScript.gd" type="Script" id=10]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.5 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 9 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="RedArchersCounter" type="Panel"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 100.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 100, 45 )
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+level_name = "level4"
+entity = "red_archers_killed"
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -8.0
+text = "0"
+align = 2
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Archer" type="AnimatedSprite" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 16, 22.5 )
+scale = Vector2( 2.5, 2.5 )
+frames = SubResource( 2 )
+frame = 4
+playing = true
