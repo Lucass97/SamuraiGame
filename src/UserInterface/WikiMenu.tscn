@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/theme/user_interface.tres" type="Theme" id=1]
+[ext_resource path="res://assets/theme/fonts/kenney_mini_square.tres" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://src/UserInterface/WikiMenu.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 44
+font_data = ExtResource( 2 )
+
+[node name="WikiMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundTileMap" type="TileMap" parent="."]
+position = Vector2( 0.366, 0 )
+tile_set = ExtResource( 3 )
+format = 1
+tile_data = PoolIntArray( -196597, -1610612736, 0, -131057, 0, 0, -65529, 1073741824, 0, -65524, -1610612736, 0, 0, 0, 0, 3, 1073741824, 0, 9, 1073741824, 0, 15, 0, 0, 65542, 1073741824, 0, 131084, 0, 0, 196611, 1073741824, 0, 196623, 0, 0, 262144, 1073741824, 0, 262154, 1073741824, 0, 327687, 1073741824, 0, 393229, -1610612736, 0, 458755, 1073741824, 0 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+color = Color( 0, 0, 0, 0.294118 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
+margin_left = 50.0
+margin_top = 20.0
+margin_right = 750.0
+margin_bottom = 459.0
+rect_min_size = Vector2( 300, 200 )
+custom_constants/separation = 6
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_right = 700.0
+margin_bottom = 55.0
+custom_fonts/font = SubResource( 1 )
+text = "how to play"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 61.0
+margin_right = 700.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 87.0
+margin_right = 700.0
+margin_bottom = 387.0
+rect_min_size = Vector2( 700, 300 )
+size_flags_horizontal = 5
+size_flags_vertical = 5
+theme = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[cell][b][color=red]Goals[/color][/b]
+- Collect coins
+- Pickup the skull to end the level
+[/cell][cell][b][color=red]Advice[/color][/b]
+- Attach an incoming arrow to reflect it.
+- if you attack an enemy when his shield is up, he will parry the sword strike.
+[/cell]"
+text = "Goals
+- Collect coins
+- Pickup the skull to end the level
+Advice
+- Attach an incoming arrow to reflect it.
+- if you attack an enemy when his shield is up, he will parry the sword strike.
+"
+scroll_active = false
+
+[node name="QuitButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_left = 260.0
+margin_top = 393.0
+margin_right = 440.0
+margin_bottom = 439.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_horizontal = 4
+text = "back"
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

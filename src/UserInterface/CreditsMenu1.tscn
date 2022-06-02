@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/UserInterface/CreditsMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/theme/user_interface.tres" type="Theme" id=2]
+[ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://assets/theme/fonts/kenney_mini_square.tres" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/credits/github-logo.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 44
+font_data = ExtResource( 4 )
+
+[node name="CreditsMenu" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="BackgroundTileMap" type="TileMap" parent="."]
+position = Vector2( 0.366, 0 )
+tile_set = ExtResource( 3 )
+format = 1
+tile_data = PoolIntArray( -196597, -1610612736, 0, -131057, 0, 0, -65529, 1073741824, 0, -65524, -1610612736, 0, 0, 0, 0, 3, 1073741824, 0, 9, 1073741824, 0, 15, 0, 0, 65542, 1073741824, 0, 131084, 0, 0, 196611, 1073741824, 0, 196623, 0, 0, 262144, 1073741824, 0, 262154, 1073741824, 0, 327687, 1073741824, 0, 393229, -1610612736, 0, 458755, 1073741824, 0 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 800.0
+margin_bottom = 480.0
+theme = ExtResource( 2 )
+color = Color( 0, 0, 0, 0.294118 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
+margin_left = 244.0
+margin_top = 94.0
+margin_right = 556.0
+margin_bottom = 385.0
+rect_min_size = Vector2( 300, 200 )
+custom_constants/separation = 6
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_right = 312.0
+margin_bottom = 55.0
+custom_fonts/font = SubResource( 1 )
+text = "samurai game"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 61.0
+margin_right = 312.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 87.0
+margin_right = 312.0
+margin_bottom = 187.0
+rect_min_size = Vector2( 300, 100 )
+bbcode_enabled = true
+bbcode_text = "[center]Game made by[/center]
+[center]Luca Gregori[/center]"
+text = "Game made by
+Luca Gregori"
+scroll_active = false
+
+[node name="Github" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_left = 66.0
+margin_top = 193.0
+margin_right = 246.0
+margin_bottom = 239.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_horizontal = 4
+text = "Github"
+icon = ExtResource( 5 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_left = 66.0
+margin_top = 245.0
+margin_right = 246.0
+margin_bottom = 291.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_horizontal = 4
+text = "Back"
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/Github" to="." method="_on_Github_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

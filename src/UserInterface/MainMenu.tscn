@@ -1,0 +1,116 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/theme/fonts/kenney_mini_square.tres" type="DynamicFontData" id=1]
+[ext_resource path="res://src/UserInterface/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://assets/theme/user_interface.tres" type="Theme" id=3]
+[ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 44
+font_data = ExtResource( 1 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundTileMap" type="TileMap" parent="."]
+position = Vector2( 0.366, 0 )
+tile_set = ExtResource( 4 )
+format = 1
+tile_data = PoolIntArray( -196597, -1610612736, 0, -131057, 0, 0, -65529, 1073741824, 0, -65524, -1610612736, 0, 0, 0, 0, 3, 1073741824, 0, 9, 1073741824, 0, 15, 0, 0, 65542, 1073741824, 0, 131084, 0, 0, 196611, 1073741824, 0, 196623, 0, 0, 262144, 1073741824, 0, 262154, 1073741824, 0, 327687, 1073741824, 0, 393229, -1610612736, 0, 458755, 1073741824, 0 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.294118 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
+margin_left = 244.0
+margin_top = 95.0
+margin_right = 556.0
+margin_bottom = 384.0
+rect_min_size = Vector2( 300, 200 )
+custom_constants/separation = 6
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_right = 312.0
+margin_bottom = 55.0
+custom_fonts/font = SubResource( 1 )
+text = "samurai game"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 61.0
+margin_right = 312.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="LevelsButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_left = 66.0
+margin_top = 87.0
+margin_right = 246.0
+margin_bottom = 133.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_horizontal = 4
+text = "levels"
+
+[node name="WikiButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_left = 66.0
+margin_top = 139.0
+margin_right = 246.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_horizontal = 4
+text = "Wiki"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_left = 66.0
+margin_top = 191.0
+margin_right = 246.0
+margin_bottom = 237.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_horizontal = 4
+text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_left = 66.0
+margin_top = 243.0
+margin_right = 246.0
+margin_bottom = 289.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_horizontal = 4
+text = "Quit"
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/LevelsButton" to="." method="_on_LevelsButton_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/WikiButton" to="." method="_on_WikiButton_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

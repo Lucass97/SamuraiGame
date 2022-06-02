@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/arrow_sound_effect1.mp3-60896ebed1182e2831630338a5c21398.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/arrow_sound_effect1.mp3"
+dest_files=[ "res://.import/arrow_sound_effect1.mp3-60896ebed1182e2831630338a5c21398.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

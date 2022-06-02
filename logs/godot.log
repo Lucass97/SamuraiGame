@@ -1,0 +1,10 @@
+Godot Engine v3.3.4.stable.official.faf3f883d - https://godotengine.org
+OpenGL ES 3.0 Renderer: Mesa Intel(R) UHD Graphics 630 (CFL GT2)
+OpenGL ES Batching: ON
+ 
+**ERROR**: res://src/UserInterface/MainMenu.tscn:1 - Parse Error: 
+   At: scene/resources/resource_format_text.cpp:848:open() - res://src/UserInterface/MainMenu.tscn:1 - Parse Error: 
+**ERROR**: Failed loading resource: res://src/UserInterface/MainMenu.tscn. Make sure resources have been imported by opening the project in the editor at least once.
+   At: core/io/resource_loader.cpp:282:_load() - Condition "found" is true. Returned: RES()
+**ERROR**: Failed loading scene: res://src/UserInterface/MainMenu.tscn
+   At: main/main.cpp:1961:start() - Condition "!scene" is true. Returned: false

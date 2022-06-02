@@ -1,0 +1,53 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/theme/user_interface.tres" type="Theme" id=1]
+[ext_resource path="res://assets/art/miscellaneous/skull/skull_09.tres" type="Texture" id=2]
+[ext_resource path="res://assets/art/miscellaneous/skull/skull_01.tres" type="Texture" id=3]
+[ext_resource path="res://assets/art/miscellaneous/skull/skull_07.tres" type="Texture" id=4]
+[ext_resource path="res://assets/art/miscellaneous/skull/skull_05.tres" type="Texture" id=5]
+[ext_resource path="res://assets/art/miscellaneous/skull/skull_04.tres" type="Texture" id=6]
+[ext_resource path="res://assets/art/miscellaneous/skull/skull_06.tres" type="Texture" id=7]
+[ext_resource path="res://assets/art/miscellaneous/skull/skull_08.tres" type="Texture" id=8]
+[ext_resource path="res://assets/art/miscellaneous/skull/skull_02.tres" type="Texture" id=9]
+[ext_resource path="res://assets/art/miscellaneous/skull/skull_03.tres" type="Texture" id=10]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.5 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Completed" type="Panel"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 220.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 220, 45 )
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -8.0
+text = "completed"
+align = 2
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Archer" type="AnimatedSprite" parent="."]
+position = Vector2( 18, 22.5 )
+frames = SubResource( 2 )
+frame = 4
+playing = true

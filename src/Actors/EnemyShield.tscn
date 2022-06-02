@@ -1,0 +1,393 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://src/Actors/EnemyShield.gd" type="Script" id=1]
+[ext_resource path="res://assets/art/enemy/knight_shield/knight_shield_attack/knight_shield_attack_01.tres" type="Texture" id=2]
+[ext_resource path="res://assets/art/enemy/knight_shield/knight_shield_walk/knight_shield_walk_05.tres" type="Texture" id=3]
+[ext_resource path="res://assets/art/player/bullet/bullet.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/enemy/knight_shield/knight_shield_walk/knight_shield_walk_03.tres" type="Texture" id=5]
+[ext_resource path="res://assets/art/miscellaneous/hit/hit_03.tres" type="Texture" id=6]
+[ext_resource path="res://assets/art/miscellaneous/hit/hit_01.tres" type="Texture" id=7]
+[ext_resource path="res://assets/art/miscellaneous/hit/hit_02.tres" type="Texture" id=8]
+[ext_resource path="res://assets/art/miscellaneous/hit/hit_04.tres" type="Texture" id=9]
+[ext_resource path="res://assets/art/enemy/knight_shield/knight_shield_walk/knight_shield_walk_00.tres" type="Texture" id=10]
+[ext_resource path="res://assets/art/enemy/knight_shield/knight_shield_walk/knight_shield_walk_02.tres" type="Texture" id=11]
+[ext_resource path="res://assets/art/enemy/knight_shield/knight_shield_walk/knight_shield_walk_01.tres" type="Texture" id=12]
+[ext_resource path="res://assets/art/enemy/knight_shield/knight_shield_attack/knight_shield_attack_02.tres" type="Texture" id=13]
+[ext_resource path="res://assets/art/enemy/knight_shield/knight_shield_walk/knight_shield_walk_04.tres" type="Texture" id=14]
+[ext_resource path="res://assets/art/enemy/knight_shield/knight_shield_attack/knight_shield_attack_03.tres" type="Texture" id=15]
+[ext_resource path="res://assets/art/enemy/knight_shield/knight_shield_attack/knight_shield_attack_04.tres" type="Texture" id=16]
+[ext_resource path="res://assets/art/enemy/knight_shield/knight_shield_attack/knight_shield_attack_05.tres" type="Texture" id=17]
+[ext_resource path="res://assets/art/enemy/knight_shield/knight_shield_attack/knight_shield_attack_00.tres" type="Texture" id=18]
+[ext_resource path="res://assets/art/enemy/knight_shield/knight_shield_defence/knight_shield_defence_02.tres" type="Texture" id=19]
+[ext_resource path="res://assets/art/enemy/knight_shield/knight_shield_defence/knight_shield_defence_01.tres" type="Texture" id=20]
+[ext_resource path="res://assets/art/enemy/knight_shield/knight_shield_defence/knight_shield_defence_00.tres" type="Texture" id=21]
+[ext_resource path="res://assets/audio/sfx/sword_hit_shield1.mp3" type="AudioStream" id=22]
+[ext_resource path="res://assets/audio/sfx/sword_swing1.wav" type="AudioStream" id=23]
+
+[sub_resource type="Animation" id=1]
+resource_name = "destroy"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite/DetectArea:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "shield_hit"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SwordHitShieldSFX:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite/DetectArea/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 2,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite/DetectArea:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 2,
+"values": [ true, false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite/SwordHit:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite/SwordHit/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SwordSwingSFX:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 2 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": false,
+"name": "attack",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ) ],
+"loop": false,
+"name": "defende",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 14 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "walk",
+"speed": 3.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 10.3683, 13.7805 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 18.4624, 21.0521 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 50.5502, 7.04752 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 26.4916, 34.8841 )
+
+[sub_resource type="CanvasItemMaterial" id=11]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=12]
+offsets = PoolRealArray( 0.5, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 12 )
+width = 256
+
+[sub_resource type="ParticlesMaterial" id=14]
+emission_shape = 1
+emission_sphere_radius = 8.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 250, 0 )
+initial_velocity = 120.0
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle_random = 1.0
+scale_random = 1.0
+color_ramp = SubResource( 13 )
+hue_variation = 0.05
+hue_variation_random = 0.46
+
+[sub_resource type="Animation" id=15]
+resource_name = "sword_hit_shield"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SwordHitShieldSFX:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.1, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="EnemyShield" type="KinematicBody2D"]
+position = Vector2( 1, 0 )
+collision_layer = 2
+collision_mask = 17
+script = ExtResource( 1 )
+
+[node name="PlatformDetector" type="RayCast2D" parent="."]
+position = Vector2( 0, 6 )
+enabled = true
+cast_to = Vector2( 0, 8 )
+collision_mask = 8
+
+[node name="FloorDetectorLeft" type="RayCast2D" parent="."]
+position = Vector2( -30, -3 )
+enabled = true
+cast_to = Vector2( 0, 60 )
+collision_mask = 24
+
+[node name="FloorDetectorRight" type="RayCast2D" parent="."]
+position = Vector2( 30, -3 )
+enabled = true
+cast_to = Vector2( 0, 60 )
+collision_mask = 24
+
+[node name="PlayerDetectorBack" type="RayCast2D" parent="."]
+rotation = 1.5708
+enabled = true
+cast_to = Vector2( 0, 200 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/destroy = SubResource( 1 )
+anims/hit = SubResource( 2 )
+anims/shield_hit = SubResource( 3 )
+anims/sword_swing = SubResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 5, 5 )
+frames = SubResource( 5 )
+animation = "defende"
+frame = 2
+playing = true
+
+[node name="DetectArea" type="Area2D" parent="AnimatedSprite"]
+position = Vector2( 8, 0 )
+scale = Vector2( 0.2, 0.2 )
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/DetectArea"]
+scale = Vector2( 1, 2.5 )
+shape = SubResource( 6 )
+
+[node name="SwordHit" type="Area2D" parent="AnimatedSprite"]
+scale = Vector2( 0.2, 0.2 )
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/SwordHit"]
+position = Vector2( 40, 0 )
+shape = SubResource( 7 )
+disabled = true
+
+[node name="DetectArrowArea" type="Area2D" parent="AnimatedSprite"]
+visible = false
+collision_layer = 2
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/DetectArrowArea"]
+shape = SubResource( 8 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+visible = false
+frames = SubResource( 9 )
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 10 )
+
+[node name="Explosion" type="Particles2D" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.12 )
+material = SubResource( 11 )
+emitting = false
+amount = 32
+lifetime = 0.5
+one_shot = true
+speed_scale = 1.2
+explosiveness = 0.76
+draw_order = 215832976
+process_material = SubResource( 14 )
+texture = ExtResource( 4 )
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="CooldownDefende" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="RandomAttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="StaminaTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="SwordSwingSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 23 )
+
+[node name="SwordHitShieldSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 22 )
+
+[node name="AnimationPlayerOnlySFX" type="AnimationPlayer" parent="."]
+anims/sword_hit_shield = SubResource( 15 )
+
+[connection signal="body_entered" from="AnimatedSprite/DetectArea" to="." method="_on_DetectArea_body_entered"]
+[connection signal="body_exited" from="AnimatedSprite/DetectArea" to="." method="_on_DetectArea_body_exited"]
+[connection signal="body_entered" from="AnimatedSprite/SwordHit" to="." method="_on_SwordHit_body_entered"]
+[connection signal="area_entered" from="AnimatedSprite/DetectArrowArea" to="." method="_on_DetectArrowArea_area_entered"]
+[connection signal="area_exited" from="AnimatedSprite/DetectArrowArea" to="." method="_on_DetectArrowArea_area_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
+[connection signal="timeout" from="CooldownDefende" to="." method="_on_CooldownDefende_timeout"]
+[connection signal="timeout" from="RandomAttackTimer" to="." method="_on_RandomAttackTimer_timeout"]
+[connection signal="timeout" from="StaminaTimer" to="." method="_on_StaminaTimer_timeout"]

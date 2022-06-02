@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sword_hit_shield1.mp3-dd68fafabe44642d77c4ce0fefc6e5d3.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sfx/sword_hit_shield1.mp3"
+dest_files=[ "res://.import/sword_hit_shield1.mp3-dd68fafabe44642d77c4ce0fefc6e5d3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

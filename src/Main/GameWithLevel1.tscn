@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/Main/Game.gd" type="Script" id=1]
+[ext_resource path="res://src/UserInterface/InGameMenu/Health.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Level/Level1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UserInterface/InGameMenu/DeathMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/UserInterface/InGameMenu/WinMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/UserInterface/InGameMenu/PauseMenu.tscn" type="PackedScene" id=7]
+
+[node name="GameWithLevel1" type="Node"]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="Level" parent="." instance=ExtResource( 3 )]
+
+[node name="Player" parent="Level" instance=ExtResource( 6 )]
+position = Vector2( 90, 546 )
+scale = Vector2( 1.24633, 1.19058 )
+
+[node name="InterfaceLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="Control" type="Control" parent="InterfaceLayer"]
+margin_right = 800.0
+margin_bottom = 480.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" parent="InterfaceLayer/Control" instance=ExtResource( 2 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -120.0
+margin_top = 5.0
+margin_right = -6.0
+margin_bottom = 45.0
+
+[node name="PauseMenu" parent="InterfaceLayer" instance=ExtResource( 7 )]
+
+[node name="WinMenu" parent="InterfaceLayer" instance=ExtResource( 5 )]
+visible = false
+level_name = "level1"
+
+[node name="DeathMenu" parent="InterfaceLayer" instance=ExtResource( 4 )]
+visible = false
