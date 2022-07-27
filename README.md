@@ -80,11 +80,11 @@ Versione di android testata: 6.0
 
 Sviluppato e ideato da _Luca Gregori_.
 
-![Secondo livello](docs/screenshot2.png "Secondo livello")
+![Secondo livello](docs/screenshot2.png "Credits")
 
 ---
 
-[Link ufficiale a Godot.](https://godotengine.org/)
+[Link ufficiale a Godot](https://godotengine.org/) (versione utilizzata 3.3.4)
 
 ### Assets utilizzati
 - Autore: _[Senari Rey](https://senari-rey.itch.io/)_
