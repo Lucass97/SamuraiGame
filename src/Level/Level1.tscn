@@ -57,7 +57,7 @@ position = Vector2( -1411.51, -684.366 )
 position = Vector2( -557.767, -683.871 )
 
 [node name="Skull" parent="." instance=ExtResource( 13 )]
-position = Vector2( 807.775, -758.372 )
+position = Vector2( 793.521, -740.555 )
 
 [node name="EnemyKnight1" parent="." instance=ExtResource( 3 )]
 position = Vector2( -353.415, -723.649 )
@@ -154,3 +154,5 @@ position = Vector2( 0, -60 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]

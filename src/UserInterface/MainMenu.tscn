@@ -41,9 +41,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
 margin_left = 244.0
-margin_top = 95.0
+margin_top = 69.0
 margin_right = 556.0
-margin_bottom = 384.0
+margin_bottom = 410.0
 rect_min_size = Vector2( 300, 200 )
 custom_constants/separation = 6
 alignment = 1
@@ -86,11 +86,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CreditsButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+[node name="OnlineButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
 margin_left = 66.0
 margin_top = 191.0
 margin_right = 246.0
 margin_bottom = 237.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_horizontal = 4
+text = "Online"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_left = 66.0
+margin_top = 243.0
+margin_right = 246.0
+margin_bottom = 289.0
 rect_min_size = Vector2( 180, 40 )
 size_flags_horizontal = 4
 text = "Credits"
@@ -100,9 +112,9 @@ __meta__ = {
 
 [node name="QuitButton" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
 margin_left = 66.0
-margin_top = 243.0
+margin_top = 295.0
 margin_right = 246.0
-margin_bottom = 289.0
+margin_bottom = 341.0
 rect_min_size = Vector2( 180, 40 )
 size_flags_horizontal = 4
 text = "Quit"
@@ -111,6 +123,7 @@ text = "Quit"
 
 [connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/LevelsButton" to="." method="_on_LevelsButton_pressed"]
 [connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/WikiButton" to="." method="_on_WikiButton_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/OnlineButton" to="." method="_on_OnlineButton_pressed"]
 [connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

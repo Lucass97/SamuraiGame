@@ -185,6 +185,8 @@ size_flags_horizontal = 4
 theme = ExtResource( 3 )
 text = "Quit"
 
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
 [node name="Tween" type="Tween" parent="."]
 
 [connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

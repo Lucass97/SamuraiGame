@@ -1,0 +1,125 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/UserInterface/Leaderboard.gd" type="Script" id=1]
+[ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/theme/fonts/kenney_mini_square.tres" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/theme/user_interface.tres" type="Theme" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 44
+font_data = ExtResource( 3 )
+
+[node name="Leaderboard" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundTileMap" type="TileMap" parent="."]
+position = Vector2( 0.366, 0 )
+tile_set = ExtResource( 2 )
+format = 1
+tile_data = PoolIntArray( -196597, -1610612736, 0, -131057, 0, 0, -65529, 1073741824, 0, -65524, -1610612736, 0, 0, 0, 0, 3, 1073741824, 0, 9, 1073741824, 0, 15, 0, 0, 65542, 1073741824, 0, 131084, 0, 0, 196611, 1073741824, 0, 196623, 0, 0, 262144, 1073741824, 0, 262154, 1073741824, 0, 327687, 1073741824, 0, 393229, -1610612736, 0, 458755, 1073741824, 0 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+color = Color( 0, 0, 0, 0.294118 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
+margin_left = 218.0
+margin_top = 138.0
+margin_right = 582.0
+margin_bottom = 341.0
+rect_min_size = Vector2( 300, 200 )
+custom_constants/separation = 6
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_right = 364.0
+margin_bottom = 55.0
+custom_fonts/font = SubResource( 1 )
+text = "leaderboard"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 61.0
+margin_right = 364.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 87.0
+margin_right = 364.0
+margin_bottom = 125.0
+columns = 3
+
+[node name="Position" type="Label" parent="ColorRect/CenterContainer/VBoxContainer/GridContainer"]
+margin_right = 134.0
+margin_bottom = 38.0
+text = "Position "
+
+[node name="User" type="Label" parent="ColorRect/CenterContainer/VBoxContainer/GridContainer"]
+margin_left = 138.0
+margin_right = 222.0
+margin_bottom = 38.0
+text = "user "
+
+[node name="Score" type="Label" parent="ColorRect/CenterContainer/VBoxContainer/GridContainer"]
+margin_left = 226.0
+margin_right = 329.0
+margin_bottom = 38.0
+text = "score "
+
+[node name="MarginContainer2" type="MarginContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 131.0
+margin_right = 364.0
+margin_bottom = 151.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 157.0
+margin_right = 364.0
+margin_bottom = 203.0
+
+[node name="Back" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_right = 180.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_horizontal = 4
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Next" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 184.0
+margin_right = 364.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_horizontal = 4
+text = "Next"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/HBoxContainer/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/HBoxContainer/Next" to="." method="_on_Next_pressed"]

@@ -160,3 +160,6 @@ func _save_stats(path, stats_to_save):
 	file.open(path, File.WRITE)
 	file.store_line(to_json(stats_to_save))
 	file.close()
+
+func _on_OnlineButton_pressed():
+	return get_tree().change_scene("res://src/UserInterface/Online.tscn")

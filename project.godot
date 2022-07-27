@@ -101,6 +101,8 @@ target_fps="60"
 [autoload]
 
 MusicController="*res://src/Main/MusicController.tscn"
+Firebase="*res://src/OnlineServices/Firebase.gd"
+Stats="*res://src/Main/Stats.gd"
 
 [debug]
 

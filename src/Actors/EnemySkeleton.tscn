@@ -156,7 +156,6 @@ collision_mask = 24
 scale = Vector2( 5, 5 )
 frames = SubResource( 1 )
 animation = "walk"
-frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="AnimatedSprite"]
@@ -164,7 +163,7 @@ visible = false
 position = Vector2( 1.40499, -0.249213 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

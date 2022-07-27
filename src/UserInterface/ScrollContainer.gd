@@ -4,7 +4,6 @@ extends ScrollContainer
 export(float, 0.5, 1, 0.1) onready var card_scale = 0.4
 export(float, 1, 1.5, 0.1) onready var card_current_scale = 0.6
 export(float, 0.1, 1, 0.1) onready var scroll_duration = 1.3
-export onready var stats_path = "user://stats.json"
 
 var card_current_index: int = 0
 var card_x_positions: Array = []
@@ -13,7 +12,6 @@ onready var scroll_tween: Tween = Tween.new()
 onready var margin_r: int = $CenterContainer/MarginContainer.get("custom_constants/margin_right")
 onready var card_space: int = $CenterContainer/MarginContainer/HBoxContainer.get("custom_constants/separation")
 onready var card_nodes: Array = $CenterContainer/MarginContainer/HBoxContainer.get_children()
-onready var stats = {}
 onready var levels_list: Array = ["level1", "level2"]
 
 
@@ -23,8 +21,6 @@ func _ready() -> void:
 	yield(get_tree(), "idle_frame")
 	
 	get_h_scrollbar().modulate.a = 0
-	
-	_load_stats(stats_path)
 	
 	var i = 0
 	for _card in card_nodes:
@@ -37,12 +33,12 @@ func _ready() -> void:
 		# Impostazioni per ogni counter
 		for counter in counters:
 			counter.level_name = levels_list[i]
-			counter.stats = stats
+			counter.stats = Stats.record_stats
 			counter.update_text()
 			
 		var completed_label = _card.get_node(@"Completed")
 		completed_label.level_name = levels_list[i]
-		completed_label.stats = stats
+		completed_label.stats = Stats.record_stats
 		completed_label.update_text()
 		
 		i +=1
@@ -117,10 +113,3 @@ func _on_CardMenu3_gui_input(_event):
 	
 func _on_CardMenu4_gui_input(_event):
 	pass
-
-func _load_stats(stats_path_to_load):
-	var file = File.new()
-	file.open(stats_path_to_load, File.READ)
-	var text = file.get_as_text()
-	stats = parse_json(text)
-	file.close()

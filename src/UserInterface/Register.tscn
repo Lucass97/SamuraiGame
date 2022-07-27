@@ -1,0 +1,168 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/UserInterface/Register.gd" type="Script" id=1]
+[ext_resource path="res://assets/theme/fonts/kenney_mini_square.tres" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/theme/user_interface.tres" type="Theme" id=4]
+[ext_resource path="res://assets/art/tileset/tileset.tres" type="TileSet" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 44
+font_data = ExtResource( 2 )
+
+[node name="Register" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundTileMap" type="TileMap" parent="."]
+position = Vector2( 0.366, 0 )
+tile_set = ExtResource( 5 )
+format = 1
+tile_data = PoolIntArray( -196597, -1610612736, 0, -131057, 0, 0, -65529, 1073741824, 0, -65524, -1610612736, 0, 0, 0, 0, 3, 1073741824, 0, 9, 1073741824, 0, 15, 0, 0, 65542, 1073741824, 0, 131084, 0, 0, 196611, 1073741824, 0, 196623, 0, 0, 262144, 1073741824, 0, 262154, 1073741824, 0, 327687, 1073741824, 0, 393229, -1610612736, 0, 458755, 1073741824, 0 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+color = Color( 0, 0, 0, 0.294118 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
+margin_left = 218.0
+margin_top = 70.0
+margin_right = 582.0
+margin_bottom = 409.0
+rect_min_size = Vector2( 300, 200 )
+custom_constants/separation = 6
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_right = 364.0
+margin_bottom = 55.0
+custom_fonts/font = SubResource( 1 )
+text = "Register"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 61.0
+margin_right = 364.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="Username" type="HBoxContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 87.0
+margin_right = 364.0
+margin_bottom = 135.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer/Username"]
+margin_top = 5.0
+margin_right = 155.0
+margin_bottom = 43.0
+text = "username"
+
+[node name="LineEdit" type="LineEdit" parent="ColorRect/CenterContainer/VBoxContainer/Username"]
+margin_left = 159.0
+margin_right = 359.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="Password" type="HBoxContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 141.0
+margin_right = 364.0
+margin_bottom = 189.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer/Password"]
+margin_top = 5.0
+margin_right = 155.0
+margin_bottom = 43.0
+text = "password"
+
+[node name="LineEdit" type="LineEdit" parent="ColorRect/CenterContainer/VBoxContainer/Password"]
+margin_left = 159.0
+margin_right = 359.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 200, 0 )
+secret = true
+
+[node name="Confirm" type="HBoxContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 195.0
+margin_right = 364.0
+margin_bottom = 243.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect/CenterContainer/VBoxContainer/Confirm"]
+margin_top = 5.0
+margin_right = 157.0
+margin_bottom = 43.0
+text = "    confirm"
+
+[node name="LineEdit" type="LineEdit" parent="ColorRect/CenterContainer/VBoxContainer/Confirm"]
+margin_left = 161.0
+margin_right = 361.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 200, 0 )
+secret = true
+
+[node name="Notification" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 249.0
+margin_right = 364.0
+margin_bottom = 287.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 293.0
+margin_right = 364.0
+margin_bottom = 339.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/HBoxContainer3"]
+margin_right = 180.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 180, 40 )
+rect_pivot_offset = Vector2( -982.66, -160 )
+size_flags_horizontal = 4
+text = "Back"
+
+[node name="Register" type="Button" parent="ColorRect/CenterContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 184.0
+margin_right = 364.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_horizontal = 4
+text = "register"
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/HBoxContainer3/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/HBoxContainer3/Register" to="." method="_on_Register_pressed"]
