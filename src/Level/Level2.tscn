@@ -109,7 +109,7 @@ position = Vector2( 138.21, 550.632 )
 position = Vector2( 137.515, 522.554 )
 
 [node name="Skull" parent="." instance=ExtResource( 10 )]
-position = Vector2( 900.696, -182.827 )
+position = Vector2( 40.6679, 620.266 )
 
 [node name="EnemyKnight1" parent="." instance=ExtResource( 12 )]
 position = Vector2( 154.552, -118.26 )
@@ -220,6 +220,8 @@ position = Vector2( 0, -60 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [connection signal="timeout" from="CircularSaw/DamageTimer" to="CircularSaw" method="_on_DamageTimer_timeout"]
 [connection signal="body_entered" from="CircularSaw/DamageArea" to="CircularSaw" method="_on_Area2D_body_entered"]

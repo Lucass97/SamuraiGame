@@ -10,6 +10,8 @@ export var level_name = "level2"
 export var current_stats_path = "user://current_stats.json"
 export var stats_path = "user://stats.json"
 
+onready var http = $HTTPRequest
+
 var time_start = 0
 
 var current_stats = {
@@ -44,13 +46,18 @@ onready var _win_menu = $"../InterfaceLayer/WinMenu"
 
 func _ready():
 	
-	_load_stats(stats_path)
+	#_load_stats(stats_path)
+	if Firebase.is_logged:
+		Firebase.get_current_record_score("leaderboard-"+ level_name + "/%s" % Firebase.user_info.id, http)
+	Stats.reset_current_stats()
+	print("resetting")
+	print(Stats.current_stats)
 	
-	for level in stats:
+	"""for level in Stats.current_stats:
 		if level != level_name:
 			current_stats[level] = stats[level]
 	
-	current_stats[level_name] = default_stats
+	current_stats[level_name] = default_stats"""
 	
 	for child in get_children():
 		if child is Player:
@@ -90,7 +97,8 @@ func _collect_skull():
 	"""
 	
 	var elapsed = OS.get_unix_time() - time_start
-	current_stats[level_name]["completed"] = true
+	Stats.complete_level(level_name, elapsed)
+	"""current_stats[level_name]["completed"] = true
 	current_stats[level_name]["time"] = elapsed
 	var prev_time = stats[level_name]["time"]
 	if prev_time == null:
@@ -99,10 +107,11 @@ func _collect_skull():
 		_save_stats(stats_path, current_stats)
 	elif current_stats[level_name]["collected_coins"] == stats[level_name]["collected_coins"]:
 		if elapsed < int(prev_time) or not current_stats[level_name]["completed"]:
-			_save_stats(stats_path, current_stats)
+			_save_stats(stats_path, current_stats)"""
 	
 	
-	_save_stats(current_stats_path, current_stats)
+	#_save_stats(current_stats_path, current_stats)
+	Stats.register_current_stats(level_name)
 	
 	get_tree().paused = true
 	_win_menu.open()
@@ -112,9 +121,10 @@ func _update_current_stats(entity):
 	"""
 	Aggiorna le statitistiche relative all'entita specificata
 	"""
-	if entity == "completed" or entity == "time":
+	Stats.update_current_stats(level_name, entity)
+	"""if entity == "completed" or entity == "time":
 		pass
-	current_stats[level_name][entity] = int(current_stats[level_name][entity]) + 1
+	current_stats[level_name][entity] = int(current_stats[level_name][entity]) + 1"""
 	
 func _load_stats(path):
 	"""

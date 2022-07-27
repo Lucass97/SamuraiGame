@@ -77,11 +77,6 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 17 ), ExtResource( 14 ) ],
-"loop": false,
-"name": "idle_attack",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 25 ), ExtResource( 24 ), ExtResource( 26 ) ],
 "loop": false,
 "name": "running_attack",
@@ -105,6 +100,11 @@ animations = [ {
 "frames": [ ExtResource( 19 ), ExtResource( 18 ), ExtResource( 22 ) ],
 "loop": true,
 "name": "idle_attack2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 17 ), ExtResource( 14 ) ],
+"loop": false,
+"name": "idle_attack",
 "speed": 5.0
 } ]
 

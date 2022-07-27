@@ -9,7 +9,7 @@
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.5 )
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ) ],
 "loop": true,
@@ -44,6 +44,6 @@ __meta__ = {
 [node name="Skeleton" type="AnimatedSprite" parent="."]
 position = Vector2( 21.5, 22.5 )
 scale = Vector2( 2.5, 2.5 )
-frames = SubResource( 7 )
+frames = SubResource( 2 )
 frame = 1
 playing = true
