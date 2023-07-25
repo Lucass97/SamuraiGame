@@ -11,9 +11,9 @@ Two demo levels have been designed to offer players a preview of the challenges 
 **Samurai Game** was developed and conceived by [Luca Gregori](https://www.linkedin.com/in/l-gregori/) for the [Mobile Computing](https://fmilicchio.bitbucket.io/pages/mobile.html) course at [Roma Tre University](https://ingegneriacivileinformaticatecnologieaeronautiche.uniroma3.it/) (2021/2022).
 For more information, please refer to the [References](#references) section.
 
-![Demo](docs/demo.gif)
-
 You can watch a complete gameplay video showcasing all the features of the game at the following [link](https://www.youtube.com/watch?v=1PkdDnxIpIU).
+
+![Demo](docs/demo.gif)
 
 ---
 
